@@ -36,9 +36,13 @@ const gpioMemoryControlConnectedPlugAppArmor = `
 # physical memory for GPIO devices (i.e. a subset of /dev/mem) and therefore
 # grants access to all GPIO devices on the system.
 /dev/gpiomem rw,
+/dev/gpiochip[0-9]* rw,
 `
 
-var gpioMemoryControlConnectedPlugUDev = []string{`KERNEL=="gpiomem"`}
+var gpioMemoryControlConnectedPlugUDev = []string{
+	`KERNEL=="gpiomem"`,
+	`KERNEL=="gpiochip*"`,
+}
 
 func init() {
 	registerIface(&commonInterface{
