@@ -41,7 +41,7 @@ const gpioMemoryControlConnectedPlugAppArmor = `
 
 var gpioMemoryControlConnectedPlugUDev = []string{
 	`KERNEL=="gpiomem"`,
-	`KERNEL=="gpiochip*"`,
+	`SUBSYSTEM=="gpio", KERNEL=="gpiochip*", TAG+="snap_touchcoat_daemon"`,
 }
 
 func init() {
